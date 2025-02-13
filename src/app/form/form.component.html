@@ -1,0 +1,15 @@
+<h3>Template Driven from</h3>
+<style>
+    form{
+        display: flex;
+        flex-direction:column;
+    }
+</style>
+<form  #tempForm="ngForm" (ngSubmit)="onSubmit(tempForm)">
+    <label for="firstNumber">Enter first Number</label>
+    <input type="text" name="firstNumber" [(ngModel)]="allNum.num1">
+    <label for="secondNumber">Enter second Number</label>
+    <input type="text" name="secondNumber" [(ngModel)]="allNum.num2">
+    <button type="submit">Submit</button>
+</form>
+<p>Sum : {{this.sum}}</p>
