@@ -1,0 +1,45 @@
+<a class="btn btn-success" href="./">Back</a>
+<div class="container mt-4">
+    <h2 class="mb-4">Template Driven Form</h2>
+
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" [(ngModel)]="user.name" required minlength="3"
+                #name="ngModel" />
+            <div class="text-danger" *ngIf="name.invalid && name.touched">
+                <small *ngIf="name.errors?.['required']">Name is required.</small>
+                <small *ngIf="name.errors?.['minlength']">Minimum 3 characters required.</small>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" [(ngModel)]="user.email" required email
+                #email="ngModel" />
+            <div class="text-danger" *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.['required']">Email is required.</small>
+                <small *ngIf="email.errors?.['email']">Enter a valid email.</small>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Country:</label>
+            <select id="country" name="country" class="form-select" [(ngModel)]="user.country" required
+                #country="ngModel">
+                <option value="" disabled selected>Select your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+            <div class="text-danger" *ngIf="country.invalid && country.touched">
+                <small *ngIf="country.errors?.['required']">Country is required.</small>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
+            Submit
+        </button>
+    </form>
+
+</div>
