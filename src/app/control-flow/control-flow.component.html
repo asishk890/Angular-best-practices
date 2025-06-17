@@ -1,0 +1,49 @@
+<a class="btn btn-success" href="./">Back</a>
+<p>
+
+    The three main control flow blocks are:
+
+    1. ✅ `if. else`
+    Replaces *ngIf and *ngIf else
+
+
+</p>
+
+@if (status === 'pending') {
+<p>Pending...</p>
+} @else if (status === 'approved') {
+<p>Approved!</p>
+} @else {
+<p>Rejected</p>
+}
+<hr>
+<p>
+    <!-- @for (...) {} handles the iteration.
+
+@empty {} handles the fallback when the array is empty. -->
+
+    You can use track to optimize rendering just like trackBy.
+</p>
+
+@for(user of user; track user.id){
+<div>{{user.name}}</div>
+
+}@empty {
+<div>No user Found!</div>
+}
+<hr>
+<p>
+    <!-- @switch ... @case ... @default -->
+    Replaces *ngSwitch, *ngSwitchCase, *ngSwitchDefault
+</p>
+@switch(status){
+    @case('pending'){
+        <p>Pending</p>
+    }
+    @case('approved'){
+        <p>Approved</p>
+    }
+    @default {
+        <p>Unknown</p>
+    }
+}
